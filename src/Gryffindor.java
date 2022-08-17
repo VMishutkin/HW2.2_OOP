@@ -14,9 +14,9 @@ public class Gryffindor extends Hogwarts {
     public Gryffindor(String name, int spelling, int transgression, int nobility, int honor, int courage) {
         super(name, spelling, transgression);
         checkAndSetDefaultInputValue(nobility, honor, courage);
-            this.nobility = nobility;
-            this.honor = honor;
-            this.courage = courage;
+        this.nobility = nobility;
+        this.honor = honor;
+        this.courage = courage;
     }
 
     public void setNobility(int nobility) {
@@ -49,7 +49,7 @@ public class Gryffindor extends Hogwarts {
         return courage;
     }
 
-    public int compareGryffindorsStudents(Gryffindor compareStudent){
+    public int compareGryffindorsStudents(Gryffindor compareStudent) {
         int studentMagicQualities = sumMagicQualities(honor, courage, nobility);
         int compareStudentMagicQualities = sumMagicQualities(compareStudent.getCourage(), compareStudent.getHonor(), compareStudent.getNobility());
         String faculty = " лучший Гриффиндорец, чем ";

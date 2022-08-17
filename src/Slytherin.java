@@ -1,4 +1,4 @@
-public class Slytherin extends Hogwarts{
+public class Slytherin extends Hogwarts {
     private int cunning;
     private int determination;
     private int ambition;
@@ -7,7 +7,7 @@ public class Slytherin extends Hogwarts{
 
     public Slytherin(String name, int spelling, int transgression, int cunning, int determination, int ambition, int gumption, int powerLusting) {
         super(name, spelling, transgression);
-        checkAndSetDefaultInputValue(cunning,determination,ambition,gumption,powerLusting);
+        checkAndSetDefaultInputValue(cunning, determination, ambition, gumption, powerLusting);
         this.cunning = cunning;
         this.determination = determination;
         this.ambition = ambition;
@@ -15,13 +15,23 @@ public class Slytherin extends Hogwarts{
         this.powerLusting = powerLusting;
     }
 
+    public String toString() {
+        return "Слизерин : " + super.toString() +
+                " cunning - " + cunning +
+                " determination - " + determination +
+                " ambition - " + ambition
+                + " gumption - " + gumption +
+                " powerLusting - " + powerLusting;
+    }
+
     public int getCunning() {
         return cunning;
     }
 
     public void setCunning(int cunning) {
-        if(checkInputQualityValue(cunning)){
-        this.cunning = cunning;}
+        if (checkInputQualityValue(cunning)) {
+            this.cunning = cunning;
+        }
     }
 
     public int getDetermination() {
@@ -63,10 +73,11 @@ public class Slytherin extends Hogwarts{
             this.powerLusting = powerLusting;
         }
     }
-    public int compareSlytherinsStudents(Slytherin compareStudent){
+
+    public int compareSlytherinsStudents(Slytherin compareStudent) {
         int studentMagicQualities = sumMagicQualities(cunning, determination, ambition, gumption, powerLusting);
         int compareStudentMagicQualities = sumMagicQualities(compareStudent.getCunning(), compareStudent.getDetermination(),
-                compareStudent.getAmbition(),compareStudent.getGumption(), compareStudent.getPowerLusting());
+                compareStudent.getAmbition(), compareStudent.getGumption(), compareStudent.getPowerLusting());
         String faculty = " лучший Слизеринец, чем ";
         return compareMagicQualities(this.getName(), studentMagicQualities, compareStudent.getName(), compareStudentMagicQualities, faculty);
     }

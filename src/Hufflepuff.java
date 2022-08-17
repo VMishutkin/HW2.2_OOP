@@ -11,6 +11,13 @@ public class Hufflepuff extends Hogwarts {
         this.honesty = honesty;
     }
 
+    public String toString() {
+        return "Пуффендуй : " + super.toString() +
+                " honesty - " + honesty +
+                " industriousness - " + industriousness +
+                " loyalty - " + loyalty;
+    }
+
     public int getIndustriousness() {
         return industriousness;
     }

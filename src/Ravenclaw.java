@@ -3,6 +3,13 @@ public class Ravenclaw extends Hogwarts {
     private int wise;
     private int creativity;
 
+    public String toString() {
+        return "Когтевран : " + super.toString() +
+                " wisdom - " + wisdom +
+                " wise - " + wise +
+                " creativity - " + creativity;
+    }
+
     public Ravenclaw(String name, int spelling, int transgression, int wisdom, int wise, int creativity) {
         super(name, spelling, transgression);
         checkAndSetDefaultInputValue(wisdom, wise, creativity);
