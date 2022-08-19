@@ -20,22 +20,22 @@ public class Gryffindor extends Hogwarts {
     }
 
     public void setNobility(int nobility) {
-        if (checkInputQualityValue(nobility)) {
-            this.nobility = nobility;
-        }
+        checkAndSetDefaultInputValue(nobility);
+        this.nobility = nobility;
     }
+
 
     public void setHonor(int honor) {
-        if (checkInputQualityValue(honor)) {
-            this.honor = honor;
-        }
+        checkAndSetDefaultInputValue(honor);
+        this.honor = honor;
     }
 
+
     public void setCourage(int courage) {
-        if (checkInputQualityValue(courage)) {
-            this.courage = courage;
-        }
+        checkAndSetDefaultInputValue(courage);
+        this.courage = courage;
     }
+
 
     public int getNobility() {
         return nobility;
@@ -49,11 +49,11 @@ public class Gryffindor extends Hogwarts {
         return courage;
     }
 
-    public int compareGryffindorsStudents(Gryffindor compareStudent) {
-        int studentMagicQualities = sumMagicQualities(honor, courage, nobility);
-        int compareStudentMagicQualities = sumMagicQualities(compareStudent.getCourage(), compareStudent.getHonor(), compareStudent.getNobility());
+    public int compareGryffindorQuailities(Gryffindor anotherStudent) {
+        int studentMagicQualities = sumQualities(honor, courage, nobility);
+        int compareStudentMagicQualities = sumQualities(anotherStudent.getCourage(), anotherStudent.getHonor(), anotherStudent.getNobility());
         String faculty = " лучший Гриффиндорец, чем ";
-        return compareMagicQualities(this.getName(), studentMagicQualities, compareStudent.getName(), compareStudentMagicQualities, faculty);
+        return compareQualities(this.getName(), studentMagicQualities, anotherStudent.getName(), compareStudentMagicQualities, faculty);
     }
 
 }

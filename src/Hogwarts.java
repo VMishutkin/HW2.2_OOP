@@ -15,12 +15,12 @@ public abstract class Hogwarts {
     }
 
     public void setSpelling(int spelling) {
-        if (checkInputQualityValue(spelling))
+       checkAndSetDefaultInputValue(spelling);
             this.spelling = spelling;
     }
 
     public void setTransgression(int transgression) {
-        if (checkInputQualityValue(transgression))
+       checkAndSetDefaultInputValue(transgression);
             this.transgression = transgression;
     }
 
@@ -48,11 +48,11 @@ public abstract class Hogwarts {
 
     }
 
-    protected int sumMagicQualities(int... magicQualities) {
+    protected int sumQualities(int... magicQualities) {
         return IntStream.of(magicQualities).sum(); //Общий для класса и наследников метод который суммирует требуемые для проверки качества
     }
 
-    protected int compareMagicQualities(String firstStudentName, int firstStudentMagicQualities, String secondStudentName, int secondStudentMagicQualities, String betterString) {
+    protected int compareQualities(String firstStudentName, int firstStudentMagicQualities, String secondStudentName, int secondStudentMagicQualities, String betterString) {
         // Общий для всех метод который сравнивает двух студентов по сумме качеств и подставляет имена и строку с текстом кто лучше.
         if (firstStudentMagicQualities > secondStudentMagicQualities) {
             System.out.println(firstStudentName + betterString + secondStudentName);
@@ -65,31 +65,26 @@ public abstract class Hogwarts {
         return firstStudentMagicQualities - secondStudentMagicQualities;
     }
 
-    public int compareHogwartsStudents(Hogwarts compareStudent) {
+    public int compareHogwartsStudents(Hogwarts anotherQualities) {
         //метод сравнения двух учеников хогвартса по общим качествам
-        int studentMagicQualities = sumMagicQualities(this.getSpelling(), this.transgression);
-        int compareStudentMagicQualities = sumMagicQualities(compareStudent.getSpelling(), compareStudent.getTransgression());
+        int studentMagicQualities = sumQualities(this.getSpelling(), this.transgression);
+        int compareStudentMagicQualities = sumQualities(anotherQualities.getSpelling(), anotherQualities.getTransgression());
         String betterString = " обладает бОльшей мощностью магии, чем ";
-        return compareMagicQualities(this.getName(), studentMagicQualities, compareStudent.getName(), compareStudentMagicQualities, betterString);
+        return compareQualities(this.getName(), studentMagicQualities, anotherQualities.getName(), compareStudentMagicQualities, betterString);
     }
 
     protected void checkAndSetDefaultInputValue(int... qualities) {
         //метод проверяет что вводимое значение характеристики находится в диапазоне от 0 до 100 и если нет то устанавливает значение по умолчанию *1*
         for (int i = 0; i < qualities.length; i++) {
-            if (qualities[i] < 0 || qualities[i] > 100) {
-                qualities[i] = 1;
+            if (qualities[i] < 0) {
+                qualities[i] = 0;
 
+            } else if (qualities[i] > 100) {
+                qualities[i] = 100;
             }
         }
     }
 
-    protected boolean checkInputQualityValue(int quality) {
-        //метод который не дает в сеттеры передать невалидное значение
-        if (quality < 0 || quality > 100) {
-            System.out.println("Характеристики должны быть в диапазоне от 0 до 100");
-            return false;
-        }
-        return true;
-    }
+
 
 }

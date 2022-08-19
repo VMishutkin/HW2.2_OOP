@@ -23,36 +23,36 @@ public class Hufflepuff extends Hogwarts {
     }
 
     public void setIndustriousness(int industriousness) {
-        if (checkInputQualityValue(industriousness)) {
-            this.industriousness = industriousness;
-        }
+        checkAndSetDefaultInputValue(industriousness);
+        this.industriousness = industriousness;
     }
+
 
     public int getLoyalty() {
         return loyalty;
     }
 
     public void setLoyalty(int loyalty) {
-        if (checkInputQualityValue(loyalty)) {
-            this.loyalty = loyalty;
-        }
+        checkAndSetDefaultInputValue(loyalty);
+        this.loyalty = loyalty;
     }
+
 
     public int getHonesty() {
         return honesty;
     }
 
     public void setHonesty(int honesty) {
-        if (checkInputQualityValue(honesty)) {
-            this.honesty = honesty;
-        }
+        checkAndSetDefaultInputValue(honesty);
+        this.honesty = honesty;
     }
 
-    public int compareHufflepuffsStudents(Hufflepuff compareStudent) {
-        int studentMagicQualities = sumMagicQualities(honesty, loyalty, industriousness);
-        int compareStudentMagicQualities = sumMagicQualities(compareStudent.getHonesty(), compareStudent.getLoyalty(), compareStudent.getIndustriousness());
+
+    public int compareHufflepuffsStudents(Hufflepuff anotherStudent) {
+        int studentMagicQualities = sumQualities(honesty, loyalty, industriousness);
+        int compareStudentMagicQualities = sumQualities(anotherStudent.getHonesty(), anotherStudent.getLoyalty(), anotherStudent.getIndustriousness());
         String faculty = " лучший Пуффендуец, чем ";
-        return compareMagicQualities(this.getName(), studentMagicQualities, compareStudent.getName(), compareStudentMagicQualities, faculty);
+        return compareQualities(this.getName(), studentMagicQualities, anotherStudent.getName(), compareStudentMagicQualities, faculty);
     }
 
 

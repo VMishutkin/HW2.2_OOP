@@ -23,36 +23,36 @@ public class Ravenclaw extends Hogwarts {
     }
 
     public void setWisdom(int wisdom) {
-        if (checkInputQualityValue(wisdom)) {
-            this.wisdom = wisdom;
-        }
+        checkAndSetDefaultInputValue(wisdom);
+        this.wisdom = wisdom;
     }
+
 
     public int getWise() {
         return wise;
     }
 
     public void setWise(int wise) {
-        if (checkInputQualityValue(wise)) {
-            this.wise = wise;
-        }
+        checkAndSetDefaultInputValue(wise);
+        this.wise = wise;
     }
+
 
     public int getCreativity() {
         return creativity;
     }
 
-    public void setCreativity(int creativity) {
-        if (checkInputQualityValue(creativity)) {
+
+        public void setCreativity ( int creativity){
+            checkAndSetDefaultInputValue(creativity);
             this.creativity = creativity;
         }
-    }
 
 
-    public int compareRavenclawsStudents(Ravenclaw compareStudent) {
-        int studentMagicQualities = sumMagicQualities(wisdom, wise, creativity);
-        int compareStudentMagicQualities = sumMagicQualities(compareStudent.getWisdom(), compareStudent.getWise(), compareStudent.getCreativity());
-        String faculty = " лучший Когтеврановец, чем ";
-        return compareMagicQualities(this.getName(), studentMagicQualities, compareStudent.getName(), compareStudentMagicQualities, faculty);
+        public int compareRavenclawsStudents (Ravenclaw anotherStudent){
+            int studentMagicQualities = sumQualities(wisdom, wise, creativity);
+            int compareStudentMagicQualities = sumQualities(anotherStudent.getWisdom(), anotherStudent.getWise(), anotherStudent.getCreativity());
+            String faculty = " лучший Когтеврановец, чем ";
+            return compareQualities(this.getName(), studentMagicQualities, anotherStudent.getName(), compareStudentMagicQualities, faculty);
+        }
     }
-}
